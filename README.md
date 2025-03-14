@@ -28,6 +28,7 @@ Antes de começar, você precisa ter instalado:
    ```bash
    docker compose build
    docker compose up
+   docker compose run frontend bash -> npm install [somente primeira vez]
    ```
 
 3. Acesse no navegador:
