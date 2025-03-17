@@ -25,30 +25,16 @@ function ParticipantsList() {
 
   const dispatch = useDispatch();
 
-  const handleAddParticipant = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    api.post('/participants', {
-      name: '',
-      email: emailAddParticipant,
-      draw_id: currentDrawId
-    })
-      .then(response => {
-        if (response.status >= 200 && response.status <= 299) {
-          dispatch(addParticipantList(emailAddParticipant));
-          setIsModalOpen(false);
-        }
-      })
-      .catch(error => {
-        console.error("Erro:", error);
-      })
-      .finally(() => {
-        setIsModalOpen(false)
-      });
+  const handleAddParticipant = () => {
+    dispatch(addParticipantList(emailAddParticipant));
+    setIsModalOpen(false);
   };
 
   const handleFinish = () => {
-    const params = participantsListStore
+    const params = {
+      participants: participantsListStore,
+      draw_id: currentDrawId
+    }
     api.post('/participants', params)
       .then(response => {
         if (response.status >= 200 && response.status <= 299) {
@@ -56,38 +42,19 @@ function ParticipantsList() {
         }
       })
       .catch(error => {
+        console.log(params)
         console.error("Erro:", error);
       });
   };
 
-  const handleEditClick = (participant: string, id: number) => {
+  const handleEditClick = (participant: string) => {
     dispatch(removeParticipant(participant));
     setEmailAddParticipant(participant)
     setIsModalOpen(true);
-    const params = { email: participant }
-    api.patch(`/participants/${id}`, params)
-      .then(response => {
-        if (response.status >= 200 && response.status <= 299) {
-          console.log(response.data);
-        }
-      })
-      .catch(error => {
-        console.error("Erro:", error);
-
-      });
   };
 
-  const handleDeleteClick = (participant: string, id: number) => {
+  const handleDeleteClick = (participant: string) => {
     dispatch(removeParticipant(participant));
-    api.delete(`/participants/${id}`)
-      .then(response => {
-        if (response.status >= 200 && response.status <= 299) {
-          console.log(response.data);
-        }
-      })
-      .catch(error => {
-        console.error("Erro:", error);
-      });
   }
 
   return (
@@ -137,11 +104,11 @@ function ParticipantsList() {
                 <div className='edition-buttons'>
 
                   <button className='delete-button' type="button" name="delete" onClick={() => {
-                    handleDeleteClick(participant, index)
+                    handleDeleteClick(participant)
                   }}>X</button>
 
                   <button className='edit-button' type="button" name="edit" onClick={() => {
-                    handleEditClick(participant, index)
+                    handleEditClick(participant)
                   }}>
                     <img src="src/assets/images/edit_icon.png" alt="Editar" className="icon" />
                   </button>
