@@ -1,7 +1,21 @@
+.content-cards {
+    overflow: auto;
+}
+
 .draw-card {
     border: 2px solid var(--primary-color);
     border-radius: 1rem;
     padding: 10px;
     margin: 20px;
     background-color: #DBDBDB;
+}
+
+.draw-card-button {
+    background-color: #DBDBDB;
+    text-align: left;
+    border: none
+}
+
+.draw-card-button p {
+    padding: 2px 0;
 }

@@ -49,7 +49,7 @@ function AllDraws() {
                     <li key={draw.id} className='draw-card'>
                         <button className="draw-card-button"
                             onClick={() => saveDrawIdStore(draw.id)}>
-                            <h3>{draw.title}</h3>
+                            <p><strong>{draw.title}</strong></p>
                             <p>Data do sorteio: {draw.date_draws}</p>
                             <p>Data da troca de presentes: {draw.date_present}</p>
                             <p>Localização: {draw.location}</p>
@@ -60,8 +60,8 @@ function AllDraws() {
 
             <div className='buttons-list'>
                 <ButtonAccept
-                    textButton="Ok"
-                    onClick={allDraws}
+                    textButton="Criar"
+                    onClick={() => window.location.href = "/criar"}
                 />
             </div>
         </div>
