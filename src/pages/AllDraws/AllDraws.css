@@ -1,5 +1,6 @@
 .content-cards {
-    overflow: auto;
+    overflow-y: auto;
+    max-height: 75vh;
 }
 
 .draw-card {
@@ -11,9 +12,9 @@
 }
 
 .draw-card-button {
-    background-color: #DBDBDB;
     text-align: left;
-    border: none
+    border: none;
+    background-color: #DBDBDB;
 }
 
 .draw-card-button p {

@@ -24,7 +24,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--base-color);
+  ;
 }
 
 a {
@@ -102,7 +102,7 @@ ul {
 }
 
 .main-head h2 {
-  padding-left: var(--gap);
+  padding-left: 2rem;
 }
 
 .default-button {
