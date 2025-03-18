@@ -11,6 +11,7 @@ import { ParticipantsInterface } from '../../interface/Participants/Participants
 function DrawDetails() {
 
     const currentDrawId = useSelector((state: RootState) => state.idDraw);
+    const currentDrawName = useSelector((state: RootState) => state.drawName);
     const [draw, setDraw] = useState<DrawInterface>();
     const [participants, setParticipants] = useState<ParticipantsInterface[]>([]);
 
@@ -54,7 +55,8 @@ function DrawDetails() {
         <div className='main-content'>
             <div className='main-head'>
                 <img className="logo" src={LogoImage} alt="Logo do Secrets Friends" />
-                <h2>Sorteio: {draw?.title}</h2>
+                <h2>{currentDrawName}</h2>
+                <h3>{draw?.other_information}</h3>
             </div>
 
             <div>

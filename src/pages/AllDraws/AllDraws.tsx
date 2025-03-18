@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { DrawInterface } from "../../interface/Draw/Draw";
 import './AllDraws.css'
 import { setIdDraw } from '../../store/reducers/idDraw';
+import { setDrawName } from '../../store/reducers/drawName';
 
 function AllDraws() {
 
@@ -19,6 +20,7 @@ function AllDraws() {
             .then(response => {
                 if (response.status >= 200 && response.status <= 299) {
                     setDraws(response.data);
+                    console.log(response.data)
                 }
             })
             .catch(error => {
@@ -32,8 +34,9 @@ function AllDraws() {
 
     const dispatch = useDispatch();
 
-    function saveDrawIdStore(id: number) {
+    function saveDrawIdStore(id: number, name: string) {
         dispatch(setIdDraw(id));
+        dispatch(setDrawName(name));
         window.location.href = "/detalhes";
     }
 
@@ -48,7 +51,7 @@ function AllDraws() {
                 {draws.map((draw) => (
                     <li key={draw.id} className='draw-card'>
                         <button className="draw-card-button"
-                            onClick={() => saveDrawIdStore(draw.id)}>
+                            onClick={() => saveDrawIdStore(draw.id, draw.title)}>
                             <p><strong>{draw.title}</strong></p>
                             <p>Data do sorteio: {draw.date_draws}</p>
                             <p>Data da troca de presentes: {draw.date_present}</p>
