@@ -1,0 +1,21 @@
+.participants-detail {
+    overflow-y: auto;
+    max-height: 55vh;
+    margin-top: 1rem;
+}
+
+.participant-detail {
+    border: 0.1rem solid var(--primary-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    width: 358px;
+}
+
+.modal {
+    align-items: center;
+}
+
+.other-information {
+    margin: 0 1rem 1rem 1rem;
+}
