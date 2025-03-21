@@ -1,14 +1,15 @@
 .message {
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 358px;
     text-align: center;
+    overflow-y: auto;
+    max-height: 60vh;
 }
 
 .message-participant {
-    padding-bottom: calc(2 * var(--gap));
     display: flex;
     flex-direction: row;
     justify-content: space-between;

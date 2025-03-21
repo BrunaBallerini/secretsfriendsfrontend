@@ -20,11 +20,11 @@
   font-size: 16px;
 }
 
-* {
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  ;
+  background-color: var(--base-color);
 }
 
 a {
@@ -38,6 +38,7 @@ h2 {
 
 p {
   font-size: 1rem;
+  margin: 0;
 }
 
 ul {
@@ -102,7 +103,7 @@ ul {
 }
 
 .main-head h2 {
-  padding-left: 2rem;
+  padding: 0 2rem;
 }
 
 .default-button {

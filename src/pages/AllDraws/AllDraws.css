@@ -9,12 +9,13 @@
     padding: 10px;
     margin: 20px;
     background-color: #DBDBDB;
+    width: 358px;
 }
 
 .draw-card-button {
     text-align: left;
     border: none;
-    background-color: #DBDBDB;
+    background-color: inherit !important;
 }
 
 .draw-card-button p {
