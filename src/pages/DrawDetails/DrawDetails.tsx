@@ -45,7 +45,7 @@ function DrawDetails() {
             .then(response => {
                 if (response.status >= 200 && response.status <= 299) {
                     console.log(response.data)
-                    // window.location.href = "/sorteio_realizado";
+                    window.location.href = "/sorteio_realizado";
                 }
             })
             .catch(error => {
