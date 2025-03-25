@@ -12,6 +12,7 @@ import storage from 'redux-persist/es/storage';
 import participantListSlice from './reducers/participantsList.ts'
 import emailResetPasswordSlice from './reducers/emailResetPassword.ts'
 import drawNameSlice from './reducers/drawName.ts'
+import drawStatusSlice from './reducers/drawStatus.ts'
 
 const persistConfig = {
     key: 'root',
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
     idUser: idUserSlice,
     emailResetPassword: emailResetPasswordSlice,
     drawName: drawNameSlice,
+    drawStatus: drawStatusSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
