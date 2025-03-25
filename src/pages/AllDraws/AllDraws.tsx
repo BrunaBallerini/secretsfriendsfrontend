@@ -9,6 +9,7 @@ import { DrawInterface } from "../../interface/Draw/Draw";
 import './AllDraws.css'
 import { setIdDraw } from '../../store/reducers/idDraw';
 import { setDrawName } from '../../store/reducers/drawName';
+import { setDrawStatus } from '../../store/reducers/drawStatus';
 
 function AllDraws() {
 
@@ -20,7 +21,6 @@ function AllDraws() {
             .then(response => {
                 if (response.status >= 200 && response.status <= 299) {
                     setDraws(response.data);
-                    console.log(response.data)
                 }
             })
             .catch(error => {
@@ -30,6 +30,7 @@ function AllDraws() {
 
     useEffect(() => {
         allDraws();
+        dispatch(setDrawStatus(false));
     }, [currentIdUser]);
 
     const dispatch = useDispatch();
