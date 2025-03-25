@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LogoImage from '../../assets/images/Logo.svg'
 import ButtonAccept from '../../components/ButtonAccept/ButtonAccept'
 import { RootState } from '../../store';
@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { ParticipantsInterface } from '../../interface/Participants/Participants'
 import './DrawDetails.css'
 import Modal from '../../components/Modal/Modal';
+import { setDrawStatus } from '../../store/reducers/drawStatus';
 
 function DrawDetails() {
 
@@ -17,6 +18,7 @@ function DrawDetails() {
     const [draw, setDraw] = useState<DrawInterface>();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [participants, setParticipants] = useState<ParticipantsInterface[]>([]);
+    const dispatch = useDispatch();
 
     function showDrawDetails() {
         api.get(`/draws/${currentDrawId}`)
@@ -24,10 +26,6 @@ function DrawDetails() {
                 if (response.status >= 200 && response.status <= 299) {
                     setDraw(response.data.draw);
                     setParticipants(response.data.participants)
-                    console.log(response.data);
-                    console.log(response.data.participants);
-
-                    // window.location.href = "/sorteio_realizado";
                 }
             })
             .catch(error => {
@@ -43,9 +41,16 @@ function DrawDetails() {
         const params = { id: currentDrawId }
         api.post('/assign_friends', params)
             .then(response => {
-                if (response.status >= 200 && response.status <= 299) {
-                    console.log(response.data)
+                if (response.status == 200) {
+                    dispatch(setDrawStatus(response.data.completed));
+                    window.location.href = "/sorteio_já_realizado";
+                }
+                if (response.status == 201) {
+                    dispatch(setDrawStatus(response.data.completed));
                     window.location.href = "/sorteio_realizado";
+                }
+                if (response.status >= 202 && response.status <= 299) {
+                    console.log(response.status)
                 }
             })
             .catch(error => {
@@ -85,7 +90,7 @@ function DrawDetails() {
 
             <div className='buttons-list'>
                 <ButtonAccept
-                    textButton="REALIZAR SORTEIO"
+                    textButton="SORTEIO"
                     onClick={handleDraw}
                 />
                 <ButtonAccept
