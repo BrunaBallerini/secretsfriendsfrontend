@@ -42,7 +42,6 @@ function ParticipantsList() {
         }
       })
       .catch(error => {
-        console.log(params)
         console.error("Erro:", error);
       });
   };
