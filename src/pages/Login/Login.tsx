@@ -59,9 +59,22 @@ const Login = () => {
         const userToken = response.headers.authorization;
         const userId = response.data.data.id;
         handleStoreChange(userName, userToken, userId)
-        window.location.href = '/home';
+        allDraws(userId)
+        // window.location.href = '/home';
       }
     })
+      .catch(error => {
+        console.error("Erro:", error);
+      });
+  }
+
+  function allDraws(id: number) {
+    api.get(`/draws?user_id=${id}`)
+      .then(response => {
+        if (response.status >= 200 && response.status <= 299) {
+          response.data.length ? window.location.href = '/meus_sorteios' : window.location.href = '/home';
+        }
+      })
       .catch(error => {
         console.error("Erro:", error);
       });
