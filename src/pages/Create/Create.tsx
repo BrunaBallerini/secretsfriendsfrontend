@@ -30,7 +30,7 @@ function Create() {
     {
       labelForInput: 'Valor mínimo',
       placeholderInput: 'Ex: 10,00',
-      typeInput: 'text',
+      typeInput: 'number',
       setInputValue: setMinValue,
       inputName: 'valor-minimo',
       inputId: 'valor-minimo-input'
@@ -38,7 +38,7 @@ function Create() {
     {
       labelForInput: 'Valor máximo',
       placeholderInput: 'Ex: 50,00',
-      typeInput: 'text',
+      typeInput: 'number',
       setInputValue: setMaxValue,
       inputName: 'valor-maximo',
       inputId: 'valor-maximo-input'
@@ -46,7 +46,7 @@ function Create() {
     {
       labelForInput: 'Data do Sorteio',
       placeholderInput: 'Ex: 10/12/2024',
-      typeInput: 'text',
+      typeInput: 'date',
       setInputValue: setDateDraw,
       inputName: 'data-sorteio',
       inputId: 'data-sorteio-input'
@@ -54,7 +54,7 @@ function Create() {
     {
       labelForInput: 'Data da troca de presentes',
       placeholderInput: 'Ex: 24/12/2024',
-      typeInput: 'text',
+      typeInput: 'date',
       setInputValue: setGiftDate,
       inputName: 'data-presentes',
       inputId: 'data-presentes-input'
